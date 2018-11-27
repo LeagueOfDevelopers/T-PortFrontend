@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const FooterContents = styled.div`
@@ -7,7 +7,7 @@ const FooterContents = styled.div`
 `;
 
 const Footer = () => {
-  return <FooterContents />;
+  return <FooterContents>Подвал</FooterContents>;
 };
 
 export default Footer;

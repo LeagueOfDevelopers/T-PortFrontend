@@ -5,17 +5,20 @@ import styled from "styled-components";
 const NavBar = styled.div`
   font-size: 1.5em;
   text-align: center;
-  color: palevioletred;
+
   display: flex;
   justify-content: space-around;
-  background-color: greenyellow;
+  
   align-items: center;
+  color: palevioletred;
+  max-width: 1200px;
+  margin:auto;
 
   > a {
-    border: 2px solid palevioletred;
-    border-radius: 3px;
+    /* border: 2px solid palevioletred;
+    border-radius: 3px; */
     text-align: center;
-    text-decoration:none;
+    text-decoration: none;
   }
 `;
 
@@ -25,16 +28,26 @@ const Logo = styled.h1`
   display: inline-block;
 `;
 
+const HeaderContents = styled.header`
+  width: 100%;
+  background-color: greenyellow;
+  
+`;
+
 class Header extends Component {
   render() {
     return (
-      <NavBar>
-        <Logo>HUI</Logo>
-        <NavLink to="/home">HOME</NavLink>
-        <NavLink to="/routesearch">ROUTE SEARCH</NavLink>
-        <NavLink to="/profile">prifile</NavLink>
-        <NavLink to="/specialoffers">special offers</NavLink>
-      </NavBar>
+      <HeaderContents>
+        <NavBar>
+          <NavLink to="/home">
+            <Logo>HUI</Logo>
+          </NavLink>
+          <NavLink to="/routesearch">Поиск маршрутов</NavLink>
+          <NavLink to="/profile">Личный кабинет</NavLink>
+          <NavLink to="/myorders">Мои заказы</NavLink>
+          <NavLink to="/specialoffers">Бонусы</NavLink>
+        </NavBar>
+      </HeaderContents>
     );
   }
 }
