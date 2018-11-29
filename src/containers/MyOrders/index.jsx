@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
 
-const MyOrdersContents = styled.div``;
-const OrderContents = styled.div``;
+const StyledMyOrders = styled.div``;
+const StyledOrder = styled.div``;
 
 class MyOrders extends Component {
     state = { orders: ['заказ 1','заказ 2','заказ 3','заказ 4'] }
     render() { 
         return ( 
-        <MyOrdersContents>
+        <StyledMyOrders>
             <h3>Ваши заказы</h3>
             <ul>{
-                this.state.orders.map(order => <ul><OrderContents>{order}</OrderContents></ul>)
+                this.state.orders.map(order => <ul><StyledOrder>{order}</StyledOrder></ul>)
             }</ul>
-        </MyOrdersContents> 
+        </StyledMyOrders> 
         );
     }
 }

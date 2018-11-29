@@ -1,18 +1,10 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import SearchInput from "../SearchInput";
+import SearchFilters from "./SearchFilters";
+import SearchButton from "../SearchButton";
 
 const SearchFormContents = styled.form`
-  input[type="text"] {
-    background-color:red;
-    border: 0;
-    padding: 1;
-    width: 40px;
-  }
-
-  > * {
-    display: inline-block;
-  }
-
   display: inline-block;
   border: 2px solid black;
   padding: 8px 16px;
@@ -26,11 +18,11 @@ class SearchForm extends Component {
     return (
       <SearchFormContents onSubmit={this.props.onSubmit}>
         <label htmlFor="from">Откуда</label>
-        <input type="text" id="from" />
+        <SearchInput type="text" id="from" />
         <label htmlFor="to">куда</label>
-        <input type="text" id="to" />
-        <div>Фильтры</div>
-        <input type="submit" value="поиск" />
+        <SearchInput type="text" id="to" />
+        <SearchFilters>Фильтры</SearchFilters>
+        <SearchButton />
       </SearchFormContents>
     );
   }

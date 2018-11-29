@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import styled from "styled-components";
 
-import Header from "./Header/Header";
-import Footer from "./Footer/Footer";
-import Home from "./Home/Home";
-import RouteSearch from "./RouteSearch/RouteSearch";
-import MyOrders from "./MyOrders/MyOrders";
-import Profile from "./Profile/Profile";
-import SpecialOffers from "./SpecialOffers/SpecialOffers";
+import Header from "./Header";
+import Footer from "./Footer";
+import Home from "./Home";
+import RouteSearch from "./RouteSearch";
+import MyOrders from "./MyOrders";
+import Profile from "./Profile";
+import SpecialOffers from "./SpecialOffers";
 
 const BodyContents = styled.main`
   width: 90%;

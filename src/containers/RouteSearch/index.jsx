@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import SearchForm from "../../components/SearchForm/SearchForm";
+import SearchForm from "../../components/SearchForm";
 
-const RouteSearchContents = styled.main`
+const StyledRouteSearch = styled.main`
   > input {
     display: inline-block;
     width: 200px;
@@ -17,7 +17,7 @@ class RouteSearch extends Component {
 
   render() {
     return (
-      <RouteSearchContents>
+      <StyledRouteSearch>
         В этом разделе вы можете искать свой путь в этом бренном мире
         <br />
         <SearchForm onSubmit={this.searchHandler.bind(this)} />
@@ -29,7 +29,7 @@ class RouteSearch extends Component {
         velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.ß
-      </RouteSearchContents>
+      </StyledRouteSearch>
     );
   }
 }

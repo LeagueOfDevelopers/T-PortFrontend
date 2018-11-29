@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import SearchForm from "../../components/SearchForm/SearchForm";
+import SearchForm from "../../components/SearchForm";
 
-const HomeContents = styled.div`
+const StyledHome = styled.div`
   width: 100%;
   min-height: 100px;
   background-color: palevioletred;
@@ -14,7 +14,7 @@ const Motto = styled.span`
 // TODO ? search redirect or not ? if not how ?
 const Home = () => {
   return (
-    <HomeContents>
+    <StyledHome>
       <Motto>Наш ультракрасивый слонан</Motto>
       <div>
         <span>Search</span>
@@ -36,7 +36,7 @@ const Home = () => {
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
       </div>
-    </HomeContents>
+    </StyledHome>
   );
 };
 

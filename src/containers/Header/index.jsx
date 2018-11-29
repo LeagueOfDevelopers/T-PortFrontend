@@ -28,7 +28,7 @@ const Logo = styled.h1`
   display: inline-block;
 `;
 
-const HeaderContents = styled.header`
+const StyledHeader = styled.header`
   width: 100%;
   background-color: greenyellow;
   
@@ -37,7 +37,7 @@ const HeaderContents = styled.header`
 class Header extends Component {
   render() {
     return (
-      <HeaderContents>
+      <StyledHeader>
         <NavBar>
           <NavLink to="/home">
             <Logo>HUI</Logo>
@@ -47,7 +47,7 @@ class Header extends Component {
           <NavLink to="/myorders">Мои заказы</NavLink>
           <NavLink to="/specialoffers">Бонусы</NavLink>
         </NavBar>
-      </HeaderContents>
+      </StyledHeader>
     );
   }
 }
