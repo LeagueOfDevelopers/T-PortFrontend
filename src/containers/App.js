@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from "react-router-dom";
 import styled from "styled-components";
 
 import Header from "./Header";
@@ -13,7 +18,7 @@ import SpecialOffers from "./SpecialOffers";
 const BodyContents = styled.main`
   width: 90%;
   max-width: 1200px;
-  margin:auto;
+  margin: auto;
 `;
 
 class App extends Component {
@@ -22,12 +27,14 @@ class App extends Component {
       <div>
         <Header />
         <BodyContents>
-          <Route path="/home" component={Home} />
-          <Route exact path="/" render={() => <Redirect to="/home" />} />
-          <Route path="/routesearch" component={RouteSearch} />
-          <Route path="/myorders" component={MyOrders} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/specialoffers" component={SpecialOffers} />
+          <Switch>
+            <Route path="/home" component={Home} />
+            <Route exact path="/" render={() => <Redirect to="/home" />} />
+            <Route path="/routesearch" component={RouteSearch} />
+            <Route path="/myorders" component={MyOrders} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/specialoffers" component={SpecialOffers} />
+          </Switch>
         </BodyContents>
         <Footer />
       </div>
