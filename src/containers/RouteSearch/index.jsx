@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import SearchForm from "../../components/SearchForm";
+import PopularRoutes from "../PopularRoutes";
 
 const StyledRouteSearch = styled.main`
   > input {
@@ -28,7 +29,9 @@ class RouteSearch extends Component {
         commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
         velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.ß
+        mollit anim id est laborum.
+        <br/>
+        <PopularRoutes/>
       </StyledRouteSearch>
     );
   }

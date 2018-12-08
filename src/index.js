@@ -6,7 +6,7 @@ import { ConnectedRouter, routerMiddleware } from "connected-react-router";
 import { createBrowserHistory } from "history";
 
 import App from "./containers/App";
-import rootReducer from "./store/reducers/index";
+import rootReducer from "./reducers";
 //import store from "./store/store";
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
