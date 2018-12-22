@@ -16,9 +16,10 @@ import Profile from "./Profile";
 import SpecialOffers from "./SpecialOffers";
 
 const BodyContents = styled.main`
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
+  /* width: 90%; */
+  /* max-width: 1200px; */
+  /* margin: auto; */
+  min-height: calc(100vh - 80px);
 `;
 
 class App extends Component {
@@ -26,7 +27,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <BodyContents>
+        <BodyContents >
           <Switch>
             <Route path="/home" component={Home} />
             <Route exact path="/" render={() => <Redirect to="/home" />} />
