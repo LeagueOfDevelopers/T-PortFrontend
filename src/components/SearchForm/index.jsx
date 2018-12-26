@@ -23,17 +23,14 @@ const StyledSearchForm = styled.form`
       "margin-right": "5px;"
     })}
 
-  /* border: 2px solid black; */
   padding: 19px 24px;
   border-radius: 29px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
-  /* width: 940px; */
   max-width: 940px;
   height: fit-content;
-  /* margin: 0 auto; */
   position: relative;
   background-color: white;
-
+    text-align: start;
   
 `;
 
@@ -100,14 +97,9 @@ const StyledButtonWrapper = styled.div`
 `;
 
 const StyledLable = styled.label`
-  font-family: LucidaGrande;
   font-size: 20px;
   font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: -0.1px;
-  color: #000000;
+  /* text-align: start; */
 `;
 
 class SearchForm extends Component {

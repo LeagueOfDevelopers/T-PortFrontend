@@ -5,12 +5,18 @@ import Button from "../../components/Button";
 
 
 const StyledLoginForm = styled.form`
-  margin: calc(50vh - 200px) auto;
-  width: auto;
-  height: auto;
-  background-color: white;
-  position: relative;
+  position: absolute;
+  left: calc(50vw - 200px);
   z-index: 100;
+  width: 400px;
+  height: fit-content;
+  background-color: white;
+  padding: 16px;
+  border-radius: 8px;
+`;
+
+const ButtonWrapper = styled.div`
+margin-top:16px;
 `;
 
 class LoginForm extends Component {
@@ -19,15 +25,13 @@ class LoginForm extends Component {
     return (
       <StyledLoginForm>
         <label htmlFor="login">Login</label>
-        <br />
         <Input type="text" id="login" autoFocus />
-
-        <br />
         <label htmlFor="password">Password</label>
-        <br />
         <Input type="password" id="password" />
-        <br />
-        <Button type="submit" />
+        <ButtonWrapper>
+        <Button type="submit" value="Войти"/>
+        </ButtonWrapper>
+        
       </StyledLoginForm>
     );
   }

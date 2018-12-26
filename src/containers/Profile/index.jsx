@@ -1,13 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import LoginPopUp from "../LoginPopUp";
+import PersonalDataSwitch from "../PersonalData";
 
 const Profile = () => {
   return (
-    <div>
+    <Fragment>
       <LoginPopUp />
-      Вы личность
-    </div>
+      <PersonalDataSwitch/>
+    </Fragment>
   );
 };
 
