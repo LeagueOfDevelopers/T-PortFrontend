@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { applyMiddleware, compose, createStore } from "redux";
 import { ConnectedRouter, routerMiddleware } from "connected-react-router";
 import { createBrowserHistory } from "history";
+import ReduxThunk from 'redux-thunk'
 
 import App from "./containers/App";
 import rootReducer from "./reducers";
@@ -13,7 +14,7 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const history = createBrowserHistory();
 const store = createStore(
   rootReducer(history),
-  composeEnhancer(applyMiddleware(routerMiddleware(history)))
+  composeEnhancer(applyMiddleware(routerMiddleware(history)), applyMiddleware(ReduxThunk))
 );
 
 ReactDOM.render(
