@@ -1,41 +1,43 @@
 import React from "react";
 import styled from "styled-components";
 import SearchForm from "../../components/SearchForm";
+import PopularRoutes from "../PopularRoutes";
 
 const StyledHome = styled.div`
-  width: 100%;
-  min-height: 100px;
-  background-color: palevioletred;
+  width: 100vw;
 `;
 
-const Motto = styled.span`
-  font-size: 2em;
+const SearchWrapper = styled.div`
+  padding-top: 56px;
+  padding-bottom: 126px;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(3, 59, 121, 0.49),
+      rgba(66, 82, 100, 0.31)
+    ),
+    url("https://www.wallpaperup.com/uploads/wallpapers/2016/03/30/918988/d29264bc683df42ae189a351116ce0da-700.jpg");
+
+  background-size: auto, cover;
+  background-position: center;
 `;
+
+const MottoWrapper = styled.div`
+  height: 141px;
+  font-size: 24px;
+  font-weight: normal;
+  text-align: center;
+  color: #ffffff;
+`;
+
 // TODO ? search redirect or not ? if not how ?
 const Home = () => {
   return (
     <StyledHome>
-      <Motto>Наш ультракрасивый слонан</Motto>
-      <div>
-        <span>Search</span>
-
+      <SearchWrapper>
+        <MottoWrapper>Type something</MottoWrapper>
         <SearchForm />
-      </div>
-      <div>
-        <span>Popular</span>
-      </div>
-      <div>
-        <span>We Bettet than others</span>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </div>
+      </SearchWrapper>
+      <PopularRoutes />
     </StyledHome>
   );
 };

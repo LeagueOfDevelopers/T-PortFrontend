@@ -15,16 +15,31 @@ import MyOrders from "./MyOrders";
 import Profile from "./Profile";
 import SpecialOffers from "./SpecialOffers";
 
+const StyledBody = styled.div`
+  font-family: LucidaGrande;
+  font-size: 17px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: -0.1px;
+  text-align: center;
+  color: black;
+`;
+
 const BodyContents = styled.main`
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
+  /* width: 90%; */
+  /* max-width: 1200px; */
+  /* margin: auto; */
+  min-height: calc(100vh - 66px);
+  background-color: #f1f3f4;
+  padding-bottom: 20px;
 `;
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <StyledBody>
         <Header />
         <BodyContents>
           <Switch>
@@ -37,7 +52,7 @@ class App extends Component {
           </Switch>
         </BodyContents>
         <Footer />
-      </div>
+      </StyledBody>
     );
   }
 }
