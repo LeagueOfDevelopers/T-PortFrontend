@@ -31,7 +31,7 @@ const CardInfo = styled.div`
 const PopularCard = () => {
   return (
     <StyledCard>
-      <Thumbnail>IMG</Thumbnail>
+      <Thumbnail />
       <CardInfo>NAME</CardInfo>
     </StyledCard>
   );

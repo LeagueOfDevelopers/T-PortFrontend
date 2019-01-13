@@ -7,12 +7,15 @@ import Button from "../../components/Button";
 const StyledLoginForm = styled.form`
   position: absolute;
   left: calc(50vw - 200px);
+  bottom: calc(50vh);
+  margin: 0 auto;
   z-index: 100;
   width: 400px;
   height: fit-content;
   background-color: white;
   padding: 16px;
   border-radius: 8px;
+  text-align:start;
 `;
 
 const ButtonWrapper = styled.div`

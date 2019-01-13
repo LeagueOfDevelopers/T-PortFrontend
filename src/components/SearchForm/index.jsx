@@ -8,22 +8,9 @@ import { join } from "path";
 import { media, padding } from "../../utils/helpers";
 
 const StyledSearchForm = styled.form`
-  ${props =>
-    media.large({
-      margin: "0 auto"
-    })}
-  ${props =>
-    media.medium({
-      "margin-left": "30px;",
-      "margin-right": "30px;"
-    })}
-  ${props =>
-    media.small({
-      "margin-left": "5px;",
-      "margin-right": "5px;"
-    })}
+  
 
-  padding: 19px 24px;
+  padding: 19px 15px;
   border-radius: 29px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
   max-width: 940px;
@@ -31,7 +18,18 @@ const StyledSearchForm = styled.form`
   position: relative;
   background-color: white;
     text-align: start;
-  
+    ${media.large`
+      margin: 0 auto;
+    `}
+  ${media.medium`
+      margin-left: 30px;
+      margin-right: 30px;
+    `}
+  ${media.small`
+      margin-left: 5px;
+      margin-right: 5px;
+      padding-top: 25px;
+    `}
 `;
 
 const StyledSwitchRoutes = styled.div`
@@ -42,43 +40,42 @@ const StyledSwitchRoutes = styled.div`
   background-color: white;
   text-align: center;
 
-   ${props =>
-     media.large({
-       position: "relative;",
-       right: "30px"
-     })}
-  ${props =>
-    media.medium({
-      position: "relative;",
-      right: "30px"
-      // top: "45px"
-    })}
-  ${props =>
-    media.small({
-      position: "absolute",
-      right: "35px",
-      top: "57px"
-    })}
+   ${media.large`
+
+       position: relative;
+       right: 13px;
+      `}
+  ${media.medium`
+      position: relative;
+      right: 13px;
+
+    `}
+  ${media.small`
+      position: absolute;
+      right: 35px;
+      top: 53px;
+    `}
 `;
 
 const StyledInputWrapper = styled.div`
   display: inline-block;
-  ${props =>
-    media.large({
-      width: "28%;"
-    })}
-  ${props =>
-    media.medium({
-      width: "50%;"
-    })}
-  ${props =>
-    media.small({
-      width: "100%;"
-    })}
+  box-sizing: border-box;
+  padding: 0 15px;
+  ${media.large`
+      width: 29%;
+     
+    `}
+  ${media.medium`
+      width: 50%;
+    `}
+  ${media.small`
+      width: 100%;
+      margin-bottom: 8px;
+    `}
 `;
 
 const StyledButtonWrapper = styled.div`
-  
+margin-right:15px;
   ${media.large`
       float: right;
       margin-top: 10px;

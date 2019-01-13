@@ -3,15 +3,19 @@ import styled from "styled-components";
 import LoginForm from "../Login";
 
 const OverLay = styled.div`
-  /* display: ; */
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
   width: 100%;
   height: 100%;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
+`;
+
+const PopUpWrapper = styled.div`
+  position: fixed;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 99;
 `;
 
 class LoginPopUp extends Component {
@@ -25,11 +29,10 @@ class LoginPopUp extends Component {
 
   render() {
     return (
-      <div hidden={this.state.hidden} >
-        <LoginForm/>
+      <PopUpWrapper hidden={this.state.hidden}>
+        <LoginForm />
         <OverLay onClick={this.handleOnBlur} />
-        
-      </div>
+      </PopUpWrapper>
     );
   }
 }

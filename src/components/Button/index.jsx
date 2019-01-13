@@ -12,6 +12,8 @@ const StyledButton = styled.input`
   font-weight: bold;
   text-align: center;
   color: #ffffff;
+
+  cursor: pointer;
 `;
 
 const Button = (props) => {

@@ -12,8 +12,11 @@ const StyledHeader = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+  /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16); */
+  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.06);
 
+  position: relative;
+  z-index: 2;
   > a {
     text-decoration: none;
     color: #000;
@@ -24,6 +27,10 @@ const StyledHeader = styled.div`
 `;
 
 const Logo = styled.img`
+  
+`;
+
+const NoSmallWrapper = styled.span`
   ${hideOn}
 `;
 
@@ -31,9 +38,11 @@ class Header extends Component {
   render() {
     return (
       <StyledHeader>
+        <NoSmallWrapper noSmall>
         <NavLink to="/home">
-          <Logo noSmall src="assets/TPortLogo.png" width="100px" />
+          <Logo src="assets/TPortLogo.png" width="100px" />
         </NavLink>
+        </NoSmallWrapper>
         <NavLink to="/routesearch">ПОИСК</NavLink>
         <NavLink to="/myorders">ЗАКАЗЫ</NavLink>
         <NavLink to="/specialoffers">БОНУСЫ</NavLink>

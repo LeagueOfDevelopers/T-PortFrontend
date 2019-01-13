@@ -32,6 +32,8 @@ const BodyContents = styled.main`
   /* max-width: 1200px; */
   /* margin: auto; */
   min-height: calc(100vh - 66px);
+  background-color: #f1f3f4;
+  padding-bottom: 20px;
 `;
 
 class App extends Component {

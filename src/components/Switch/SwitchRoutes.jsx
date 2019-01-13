@@ -7,7 +7,6 @@ const StyledSwitch = styled.div`
   height: 26px;
   box-shadow: 0 0 4px 0 rgba(177, 169, 169, 0.34);
   border-radius: 13px;
-  background-color: red;
   background-image: url("assets/switch.png");
   background-size: cover;
 `;
