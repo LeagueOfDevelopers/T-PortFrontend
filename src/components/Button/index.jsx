@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledButton = styled.input`
+const StyledButton = styled.button`
   display: inline-block;
-  background-color: #007aff;
-  padding: 6px 13px;
-  border-radius: 25px;
+  background: #007aff;
+  border-image: none;
+  padding: 6px 25px;
+  border-radius: 11px;
   border-width: 0;
 
   font-size: 17px;
@@ -14,10 +15,11 @@ const StyledButton = styled.input`
   color: #ffffff;
 
   cursor: pointer;
+  outline: none;
 `;
 
 const Button = (props) => {
-  return <StyledButton type="submit" value={props.value || "Найти"} />;
+  return <StyledButton type="submit">{props.value || "Найти"}</StyledButton>;
 };
 
 export default Button;

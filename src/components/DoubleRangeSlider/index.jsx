@@ -18,9 +18,9 @@ const Slider = styled.div`
   border-radius: 4.5px;
 `;
 
-const PinOutside = styled.div.attrs({
-  style: ({pos}) => ({left: `calc(${pos + "%"} - 10.5px)`}),
-})`
+const PinOutside = styled.div.attrs(props => ({
+  style: { left: `calc(${props.pos + "%"} - 10.5px)` }
+}))`
   display: inline-block;
   box-sizing: border-box;
   width: 21px;
@@ -49,12 +49,12 @@ const Pin = props => (
   </PinOutside>
 );
 
-const Interval = styled.div.attrs({
-  style: (props) => ({
+const Interval = styled.div.attrs(props => ({
+  style: {
     left: props.posStart + "%",
-    right: 100 - props.posEnd + "%",
-  })
-})`
+    right: 100 - props.posEnd + "%"
+  }
+}))`
   position: absolute;
   background-color: #fbc328;
   /* height: 100%; */
@@ -68,29 +68,38 @@ const Overlay = styled.div`
   position: absolute;
   top: -9px;
   bottom: -9px;
-  left: 0;
-  right: 0;
+  left: -11px;
+  right: -11px;
+  /* background-color: rgba(0, 0, 0, 0.5); */
 `;
 
 class DoubleRangeSlider extends Component {
   state = {
-    first: 20,
-    second: 80,
+    first: 0,
+    second: 100,
     pressed: ""
   };
 
   handleMouseDown = e => {
     // console.log(
+    //   e.touches,
+    //   // e.target.offsetTop,
     //   e.nativeEvent.offsetX,
     //   e.target.offsetWidth,
     //   e.currentTarget.offsetWidth
     // );
 
     let firstD = Math.abs(
-      (this.state.first / 100) * e.target.offsetWidth - e.nativeEvent.offsetX
+      (this.state.first / 100) * e.target.offsetWidth -
+        (e.nativeEvent.offsetX !== undefined
+          ? e.nativeEvent.offsetX
+          : e.touches[0].clientX - e.target.getBoundingClientRect().x)
     );
     let secondD = Math.abs(
-      (this.state.second / 100) * e.target.offsetWidth - e.nativeEvent.offsetX
+      (this.state.second / 100) * e.target.offsetWidth -
+        (e.nativeEvent.offsetX !== undefined
+          ? e.nativeEvent.offsetX
+          : e.touches[0].clientX - e.target.getBoundingClientRect().x)
     );
     if (firstD < secondD) {
       this.setState({
@@ -105,18 +114,37 @@ class DoubleRangeSlider extends Component {
 
   handleMouseMove = e => {
     if (!!this.state.pressed) {
-      // console.log(e);
-      let newPercent = (e.nativeEvent.offsetX / e.target.offsetWidth) * 100;
-      if (this.state.second - this.state.first < 0) {
-        // console.log("jiiii");
-        
-        this.setState(prevState => ({ first: prevState.second }));
+      let SliderWidth = e.target.offsetWidth;
+      // console.log(SliderWidth);
+      //(e.nativeEvent.offsetX || e.touches[0].clientX - e.target.getBoundingClientRect().x)
+      let newPercent =
+        ((e.nativeEvent.offsetX !== undefined
+          ? e.nativeEvent.offsetX - 11
+          : e.touches[0].clientX - e.target.getBoundingClientRect().x - 11) /
+          (e.target.offsetWidth - 22)) *
+        100;
+      newPercent = Math.min(Math.max(newPercent, 0), 100);
+      if (
+        Math.abs(
+          ((newPercent - this.state[this.getOther(this.state.pressed)]) / 100) *
+            (SliderWidth - 22)
+        ) < 21
+      ) {
+        let offset = 21;
+        if (this.state.pressed === "second") {
+          offset *= -1;
+        }
+        let newOtherPersent = newPercent + (offset / SliderWidth) * 100;
+        newOtherPersent = Math.min(Math.max(newOtherPersent, 0), 100);
+        this.setState({ [this.getOther(this.state.pressed)]: newOtherPersent });
       }
       this.setState({
         [this.state.pressed]: newPercent
       });
     }
   };
+
+  getOther = pressedName => (pressedName === "first" ? "second" : "first");
 
   handleMouseUp = e => {
     this.setState({ pressed: "" });
@@ -131,8 +159,12 @@ class DoubleRangeSlider extends Component {
           <Pin pos={this.state.second} />
           <Overlay
             onMouseDown={this.handleMouseDown}
-            onMouseUp={this.handleMouseUp}
             onMouseMove={this.handleMouseMove}
+            onMouseUp={this.handleMouseUp}
+            onMouseLeave={this.handleMouseUp}
+            onTouchStart={this.handleMouseDown}
+            onTouchMove={this.handleMouseMove}
+            onTouchEnd={this.handleMouseUp}
           />
         </Slider>
       </SliderWrapper>

@@ -2,16 +2,27 @@ import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import DoubleRange from "../DoubleRangeSlider";
 import OptionSelector from "../OptionSelector";
+import { media } from "../../utils/helpers";
 
 const Filter = styled.div`
   &:not(:last-child) {
     border-bottom: 1px solid rgba(0, 0, 0, 0.07);
     /* background-color: red; */
   }
+  ${media.medium`
+    box-sizing: border-box;
+    width:  50%;
+    padding: 0 15px;
+    display: inline-block;
+    &:not(:last-child) {
+    border-bottom: none;
+    /* background-color: red; */
+  }
+  `}
 `;
 
 const SliderWrapper = styled.div`
-  margin: 25px 0;
+  margin: 25px 11px;
 `;
 
 const CheckboxWrapper = styled.div`
@@ -29,36 +40,23 @@ const Info = styled.div`
 `;
 
 class FilterOption extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      type: props.type,
-      contents: props.contents,
-      title: props.title
-    };
-  }
   render() {
-    let type = this.state.type;
+    let type = this.props.type;
+    let title = this.props.title;
+    let options = this.props.contents;
     return (
       <Filter>
-        <Title>{this.state.title}</Title>
+        <Title>{title}</Title>
         {(type === "checkbox" || type === "radio") && (
           <CheckboxWrapper>
-            <OptionSelector
-              options={this.state.contents.options}
-              type={type}
-              name={this.state.title}
-            />
+            <OptionSelector options={options} type={type} name={title} />
           </CheckboxWrapper>
         )}
         {type === "range" && (
           <Fragment>
             <Info>info</Info>
             <SliderWrapper>
-              <DoubleRange
-                min={this.state.contents.min}
-                max={this.state.contents.max}
-              />
+              <DoubleRange min={options.min} max={options.max} />
             </SliderWrapper>
           </Fragment>
         )}

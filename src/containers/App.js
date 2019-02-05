@@ -16,7 +16,7 @@ import Profile from "./Profile";
 import SpecialOffers from "./SpecialOffers";
 
 const StyledBody = styled.div`
-  font-family: LucidaGrande;
+  /* font-family: LucidaGrande; */
   font-size: 17px;
   font-weight: normal;
   font-style: normal;
@@ -25,6 +25,7 @@ const StyledBody = styled.div`
   letter-spacing: -0.1px;
   text-align: center;
   color: black;
+  overflow-x: hidden;
 `;
 
 const BodyContents = styled.main`
@@ -34,6 +35,7 @@ const BodyContents = styled.main`
   min-height: calc(100vh - 66px);
   background-color: #f1f3f4;
   padding-bottom: 20px;
+  /* font-family: "Open Sans", sans-serif; */
 `;
 
 class App extends Component {

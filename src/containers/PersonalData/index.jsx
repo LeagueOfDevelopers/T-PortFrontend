@@ -3,37 +3,18 @@ import styled from "styled-components";
 import InfoLabel from "../../components/InfoLabel";
 import BankCardsInfo from "../BankCardsInfo";
 import SectionLable from "../../components/SectionLabel";
+import PersonalDataNavImported from "../../components/DataNav";
+import SlimWrapper from "../../components/SlimWrapper";
+import { media, hideOn } from "../../utils/helpers";
 
 //future redux needed
 
-const MainWrapper = styled.div`
-  max-width: 950px;
-  height: 100%;
-  margin: 0 auto;
-  background-color: white;
-  box-shadow: 0 2px 4px 0 rgba(189, 184, 184, 0.5);
-  min-height: calc(100vh - 66px);
-
-  padding-top: 60px;
+const MainWrapper = styled(SlimWrapper)`
+/* add to customize */
 `;
 
-const PersonalDataNav = styled.div`
-  display: inline-block;
-  text-align: start;
-  box-sizing: border-box;
-  width: 30%;
-  padding-left: 25px;
-  padding-right: 46px;
-  vertical-align: top;
-  /* margin-top: 60px; */
-`;
-
-const PersonalDataContents = styled.div`
-  /* width: 629px; */
-  display: inline-block;
-  width: 70%;
-  box-sizing: border-box;
-  vertical-align: top;
+const LableWrapper = styled.div`
+  padding-left: 36px;
 `;
 
 class PersonalData extends Component {
@@ -44,11 +25,11 @@ class PersonalData extends Component {
     };
   }
 
-  handleLableClick = event => {
-    console.log(event);
-    if (this.state.selected !== event) {
+  handleLableClick = number => {
+    console.log(number);
+    if (this.state.selected !== number) {
       this.setState({
-        selected: event
+        selected: number
       });
     }
   };
@@ -57,8 +38,10 @@ class PersonalData extends Component {
     let selected = this.state.selected;
     return (
       <MainWrapper>
-        <PersonalDataNav>
-          <SectionLable text="Ваши данные"/>
+        <PersonalDataNavImported>
+          <LableWrapper>
+            <SectionLable text="Ваши данные" fontWeight={600} />
+          </LableWrapper>
           <InfoLabel
             text="Паспортные данные"
             onClick={this.handleLableClick.bind(null, 1)}
@@ -74,10 +57,8 @@ class PersonalData extends Component {
             onClick={this.handleLableClick.bind(null, 3)}
             selected={selected === 3}
           />
-        </PersonalDataNav>
-        <PersonalDataContents>
-        {this.state.selected === 2 && <BankCardsInfo />}
-        </PersonalDataContents>
+        </PersonalDataNavImported>
+        <Fragment>{this.state.selected === 2 && <BankCardsInfo />}</Fragment>
       </MainWrapper>
     );
   }

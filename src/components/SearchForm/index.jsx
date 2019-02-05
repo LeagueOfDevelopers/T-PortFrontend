@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Input from "../Input";
-import SearchFilters from "./SearchFilters";
 import SearchButton from "../Button";
 import SwitchRoutes from "../../components/Switch/SwitchRoutes";
-import { join } from "path";
 import { media, padding } from "../../utils/helpers";
 
 const StyledSearchForm = styled.form`
   
 
   padding: 19px 15px;
-  border-radius: 29px;
+  border-radius: 11px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
   max-width: 940px;
   height: fit-content;
@@ -48,12 +46,12 @@ const StyledSwitchRoutes = styled.div`
   ${media.medium`
       position: relative;
       right: 13px;
-
     `}
   ${media.small`
       position: absolute;
-      right: 35px;
-      top: 53px;
+      right: 25px;
+      top: 57px;
+      transform: rotate(90deg);
     `}
 `;
 
@@ -95,7 +93,7 @@ margin-right:15px;
 
 const StyledLable = styled.label`
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 600;
   /* text-align: start; */
 `;
 

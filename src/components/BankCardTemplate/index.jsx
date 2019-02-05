@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { media, hideOn } from "../../utils/helpers";
 
 const StyledCard = styled.div`
   display: inline-block;
-  /* height: 176px; */
-  padding-top: 14px;
-  padding-bottom: 27px;
+  height: 176px;
+  /* padding-top: 14px; */
+  /* padding-bottom: 27px; */
   background-color: #f1f3f4;
-  padding-left: 15px;
-  padding-right: 15px;
+  /* padding-left: 15px; */
+  /* padding-right: 15px; */
   border-radius: 8px;
   width: fit-content;
 `;
@@ -16,31 +17,30 @@ const StyledCard = styled.div`
 const CardInputWpapper = styled.div`
   display: inline-block;
   box-sizing: border-box;
-  padding: 0 12px;
-
-`;
-
-const CardNumberWrapper = styled(CardInputWpapper)`
-  width: 70%;
-`;
-
-const CardCVCWrapper = styled(CardInputWpapper)`
-  width: 30%;
-  /* max-width: 60px; */
+  /* padding: 0 12px; */
+  width: 48%;
+  ${media.small`
+    width: 100%;
+  `}
+  margin-bottom: 15px;
+  background-color: white;
+  border-radius: 11px;
+  padding: 10px 15px;
 `;
 
 const CardInput = styled.input`
   height: 30px;
   width: 100%;
-  background-color: white;
+  /* background-color: white; */
   border: 0;
-  border-radius: 8px;
+  /* border-radius: 8px; */
+  background-color: transparent;
   text-align: center;
   letter-spacing: 0.8px;
   &::placeholder {
     letter-spacing: 0.8px;
   }
-  margin-top: 12px;
+  /* margin-top: 12px; */
 `;
 
 const CardInputLable = styled.label`
@@ -49,21 +49,10 @@ const CardInputLable = styled.label`
   letter-spacing: 0.9px;
 `;
 
-const CardNumber = styled(CardInput)`
-  margin-bottom: 15px;
-`;
-
-const CardCVC = styled(CardInput)`
- 
-  margin-bottom: 15px;
-`;
-
-const CardExp= styled(CardInput)`
-  
-`;
-
-const VisaLogo = styled.img`
-  
+const CardForm = styled.form`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 class BankCardTemplate extends Component {
@@ -110,11 +99,11 @@ class BankCardTemplate extends Component {
 
   render() {
     return (
-      <StyledCard>
-        <form className="checkout">
-          <CardNumberWrapper>
+      // <StyledCard>
+        <CardForm className="checkout">
+          <CardInputWpapper>
             <CardInputLable htmlFor="cc-number">Номер карты</CardInputLable>
-            <CardNumber
+            <CardInput
               type="text"
               id="cc-number"
               autoComplete="cc-number"
@@ -123,28 +112,36 @@ class BankCardTemplate extends Component {
               value={this.state.number}
               onKeyDown={this.handleKeyDown}
             />
-          </CardNumberWrapper>
-          <CardCVCWrapper>
+          </CardInputWpapper>
+          <CardInputWpapper>
             <CardInputLable htmlFor="CVC">CVC</CardInputLable>
-            <CardCVC
+            <CardInput
               id="CVC"
               autoComplete="cc-csc"
               type="password"
               placeholder="CVC"
             />
-          </CardCVCWrapper>
+          </CardInputWpapper>
+          <CardInputWpapper>
+            <CardInputLable htmlFor="Cardholder">Держатель карты</CardInputLable>
+            <CardInput
+              id="Cardholder"
+              autoComplete="cardholder"
+              type="text"
+              placeholder="MR CARDHOLDER"
+            />
+          </CardInputWpapper>
           <CardInputWpapper>
             <CardInputLable htmlFor="cc-exp">Срок действия</CardInputLable>
-            <CardExp
+            <CardInput
               type="text"
               id="cc-exp"
               placeholder="MM/YY"
               autoComplete="cc-exp"
             />
           </CardInputWpapper>
-          <VisaLogo src="/assets/visa-logo.png" alt="visa-logo" width='92'></VisaLogo>
-        </form>
-      </StyledCard>
+        </CardForm>
+      // </StyledCard>
     );
   }
 }

@@ -3,32 +3,63 @@ import styled from "styled-components";
 
 const Saved = styled.div`
   display: inline-block;
+  position: relative;
   box-sizing: border-box;
   width: 100%;
-  padding-left:14px;
-  padding-top:40px;
-  padding-bottom:8px;
-  /* height: 153px; */
-  background-color: yellowgreen;
-    border-radius: 8px;
-  font-size: 8px;
-  font-weight: bold;
-  letter-spacing: -0.1px;
-  color: #ffffff;
+  padding: 24px 16px;
+  margin-bottom: 15px;
+
+  background-color: white;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.06px;
+  box-shadow: 0 2px 4px 0 rgba(189, 184, 184, 0.45);
+`;
+
+const ImgWrapper = styled.div`
+  display: inline-block;
+  height: 100%;
+  margin-right: 16px;
+`;
+
+const InfoWrapper = styled.div`
+  display: inline-block;
+`;
+
+const Cardholder = styled.div`
+  color: #9b9b9b;
+  font-weight: 400;
+  text-transform: uppercase;
+`;
+
+const DeleteWrapper = styled.div`
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  top:5px;
+  right: 5px;
+  cursor: pointer;
 `;
 
 const SavedBankCard = () => {
   return (
     <Saved>
-      <div>
-        <div>Номер карты</div>
-        <div>**** **** **** 1234</div>
-      </div>
-      <br/>
-      <div>
-        <div>Срок действия</div>
-        <div>08/23</div>
-      </div>
+      <ImgWrapper>
+        <img src="assets/visa-logo.png" alt="" width="63px" />
+      </ImgWrapper>
+
+      <InfoWrapper>
+        <div>
+          <span>Сбербанк</span> {'  '}
+          <span>•••• 1234</span>
+        </div>
+        <Cardholder>Mr. Cardholder</Cardholder>
+      </InfoWrapper>
+      <DeleteWrapper>
+        <img src="assets/CrossGrey.png" alt="" width="16px"/>
+      </DeleteWrapper>
     </Saved>
   );
 };

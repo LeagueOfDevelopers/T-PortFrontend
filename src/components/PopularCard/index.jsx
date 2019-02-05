@@ -5,7 +5,7 @@ const StyledCard = styled.div`
   position: relative;
   width: 388px;
   height: 270px;
-  margin: 0 32px;
+  margin: 0 16px;
   margin-bottom: 26px;
   /* background-color: red; */
   border-radius: 10px;

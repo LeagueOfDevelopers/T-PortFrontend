@@ -12,7 +12,7 @@ const StyledPopularRoutes = styled.div`
 `;
 
 const PopularName = styled.h3`
-  font-family: LucidaGrande;
+  /* font-family: LucidaGrande; */
   font-size: 24px;
   font-weight: bold;
   font-style: normal;
