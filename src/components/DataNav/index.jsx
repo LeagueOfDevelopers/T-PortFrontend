@@ -6,7 +6,7 @@ const PersonalDataNav = styled.div`
   display: inline-block;
   text-align: start;
   box-sizing: border-box;
-  width: 30%;
+  width: 100%;
   padding-top: 25px;
   padding-bottom: 40px;
   vertical-align: top;
@@ -18,6 +18,7 @@ const PersonalDataNav = styled.div`
 
   ${media.medium`
     /* background-color: red; */
+    /* width: 50%; */
   `}
   ${media.small`
     /* background-color: green; */

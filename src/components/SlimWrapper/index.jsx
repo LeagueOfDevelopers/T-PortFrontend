@@ -14,6 +14,6 @@ const MainWrapper = styled.div`
   `}
 `;
 
-const SlimWrapper = props => <MainWrapper>{props.children}</MainWrapper>;
+const SlimWrapper = props => <MainWrapper className={props.className} >{props.children}</MainWrapper>;
 
-export default SlimWrapper;
+export default MainWrapper;

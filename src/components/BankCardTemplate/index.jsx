@@ -1,53 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import StyledInput from "../PersonalInfoInput";
 import { media, hideOn } from "../../utils/helpers";
-
-const StyledCard = styled.div`
-  display: inline-block;
-  height: 176px;
-  /* padding-top: 14px; */
-  /* padding-bottom: 27px; */
-  background-color: #f1f3f4;
-  /* padding-left: 15px; */
-  /* padding-right: 15px; */
-  border-radius: 8px;
-  width: fit-content;
-`;
-
-const CardInputWpapper = styled.div`
-  display: inline-block;
-  box-sizing: border-box;
-  /* padding: 0 12px; */
-  width: 48%;
-  ${media.small`
-    width: 100%;
-  `}
-  margin-bottom: 15px;
-  background-color: white;
-  border-radius: 11px;
-  padding: 10px 15px;
-`;
-
-const CardInput = styled.input`
-  height: 30px;
-  width: 100%;
-  /* background-color: white; */
-  border: 0;
-  /* border-radius: 8px; */
-  background-color: transparent;
-  text-align: center;
-  letter-spacing: 0.8px;
-  &::placeholder {
-    letter-spacing: 0.8px;
-  }
-  /* margin-top: 12px; */
-`;
-
-const CardInputLable = styled.label`
-  display: block;
-  font-size: 15px;
-  letter-spacing: 0.9px;
-`;
 
 const CardForm = styled.form`
   display: flex;
@@ -55,93 +9,116 @@ const CardForm = styled.form`
   justify-content: space-between;
 `;
 
+const getFormattedNumber = num => {
+  let a = num
+    .replace(/\s/g, "")
+    .split("")
+    .map((letter, id) => {
+      if (id !== 0 && id % 4 === 0) {
+        return " " + letter;
+      }
+      return letter;
+    })
+    .join("");
+  return a;
+};
+
+const getRawNumber = fnum => {
+  return fnum.replace(/\s/g, "");
+};
+
 class BankCardTemplate extends Component {
   state = {
-    number: ""
+    number: "",
+    cvc: "",
+    name: ""
   };
 
   handleNumberChange = e => {
     if (
       this.state.number.length > e.target.value.length &&
-      /^\d*$/.test(this.getRawNumber(e.target.value))
+      /^\d*$/.test(getRawNumber(e.target.value))
     ) {
       this.setState({
-        number: this.getFormattedNumber(e.target.value)
+        number: getFormattedNumber(e.target.value)
       });
     }
   };
 
-  handleKeyDown = e => {
-    if (/\d/.test(e.key) && this.getRawNumber(e.target.value).length < 16) {
+  handleNumberKeyDown = e => {
+    if (/\d/.test(e.key) && getRawNumber(e.target.value).length < 16) {
       this.setState({
-        number: this.getFormattedNumber(e.target.value + e.key)
+        number: getFormattedNumber(e.target.value + e.key)
       });
     }
   };
 
-  getFormattedNumber = num => {
-    let a = num
-      .replace(/\s/g, "")
-      .split("")
-      .map((letter, id) => {
-        if (id !== 0 && id % 4 === 0) {
-          return " " + letter;
-        }
-        return letter;
-      })
-      .join("");
-    return a;
+  handleNameChange = e => {
+    console.log(e.target.value);
+    this.setState({ name: e.target.value });
   };
 
-  getRawNumber = fnum => {
-    return fnum.replace(/\s/g, "");
+  handleCvcChange = e => {
+    console.log(e.target.value);
+    this.setState({ cvc: e.target.value });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log(
+      "Submitted:",
+      "\nCard number: ",
+      e.target[0].value,
+      "\nHolder: ",
+      e.target[1].value
+    );
   };
 
   render() {
     return (
-      // <StyledCard>
-        <CardForm className="checkout">
-          <CardInputWpapper>
-            <CardInputLable htmlFor="cc-number">Номер карты</CardInputLable>
-            <CardInput
-              type="text"
-              id="cc-number"
-              autoComplete="cc-number"
-              placeholder="4111 1111 1111 1111"
-              onChange={this.handleNumberChange}
-              value={this.state.number}
-              onKeyDown={this.handleKeyDown}
-            />
-          </CardInputWpapper>
-          <CardInputWpapper>
-            <CardInputLable htmlFor="CVC">CVC</CardInputLable>
-            <CardInput
-              id="CVC"
-              autoComplete="cc-csc"
-              type="password"
-              placeholder="CVC"
-            />
-          </CardInputWpapper>
-          <CardInputWpapper>
-            <CardInputLable htmlFor="Cardholder">Держатель карты</CardInputLable>
-            <CardInput
-              id="Cardholder"
-              autoComplete="cardholder"
-              type="text"
-              placeholder="MR CARDHOLDER"
-            />
-          </CardInputWpapper>
-          <CardInputWpapper>
-            <CardInputLable htmlFor="cc-exp">Срок действия</CardInputLable>
-            <CardInput
-              type="text"
-              id="cc-exp"
-              placeholder="MM/YY"
-              autoComplete="cc-exp"
-            />
-          </CardInputWpapper>
-        </CardForm>
-      // </StyledCard>
+      <CardForm id={this.props.id} onSubmit={this.handleSubmit}>
+        <StyledInput
+          title="Номер карты"
+          type="text"
+          id="cc-number"
+          name="cardnumber"
+          autoComplete="cc-number"
+          placeholder="4111 1111 1111 1111"
+          onChange={this.handleNumberChange}
+          value={this.state.number}
+          onKeyDown={this.handleNumberKeyDown}
+        />
+        <StyledInput
+          title="CVC"
+          type="password"
+          id="cc-cvc"
+          name="cvc"
+          // it is cc-csc from docs
+          autoComplete="cc-csc"
+          onChange={this.handleCvcChange}
+          value={this.state.cvc}
+        />
+        <StyledInput
+          title="Держатель карты"
+          type="text"
+          id="cc-name"
+          name="ccname"
+          autoComplete="cardholder"
+          placeholder="MR CARDHOLDER"
+          onChange={this.handleNameChange}
+          value={this.state.name}
+        />
+        <StyledInput
+          title="Срок"
+          type="text"
+          id="cc-exp"
+          name="cc-exp"
+          // it is cc-csc from docs
+          autoComplete="cc-exp"
+          onChange={this.handleCvcChange}
+          value={this.state.cvc}
+        />
+      </CardForm>
     );
   }
 }

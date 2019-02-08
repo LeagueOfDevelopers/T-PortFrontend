@@ -54,11 +54,11 @@ class BankCardsInfo extends Component {
         <CardBlockWrapper>
           <SectionLable text="Добавить карту" />
           <CardFormWrapper>
-            <CardForm />
+            <CardForm id="cc-form"/>
           </CardFormWrapper>
 
           <ButtonWrapper>
-            <Button value="Добавить" />
+            <Button value="Добавить" form="cc-form"/>
           </ButtonWrapper>
         </CardBlockWrapper>
         <SavedWrapper>

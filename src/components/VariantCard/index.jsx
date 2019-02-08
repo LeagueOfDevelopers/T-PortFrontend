@@ -46,59 +46,70 @@ const RouteBlock = styled(TicketPart)`
   justify-content: space-around;
 `;
 
+//help me i fucking hate it
+const RouteWrapper = styled.div`
+  position: relative;
+`;
+
 const RouteBlockScrollContainer = styled.div`
   overflow-x: scroll;
   /* height: 100%; */
   /* padding-bottom: 10px; */
-  /* position: relative; */
-  &::before {
-    position: absolute;
-    content: "";
-    top: 20px;
-    width: 20px;
-    bottom: 20px;
-    /* consider parent padding */
-    left: 10px;
-    background-image: linear-gradient(to right, white, transparent);
-    /* transports are on 50th */
-    z-index: 60;
-  }
-  &::after {
-    position: absolute;
-    content: "";
-    top: 20px;
-    width: 20px;
-    bottom: 20px;
-    /* consider parent padding */
-    right: 10px;
-    background-image: linear-gradient(to left, white, transparent);
-    /* transports are on 50th */
-    z-index: 60;
-  }
-
-  /* &::-webkit-scrollbar {
-    width: 100%;
-    height: 4px;
-  }
-
-
-  &::-webkit-scrollbar-track {
-  }
+  position: relative;
 
   &::-webkit-scrollbar-thumb {
-    background: #007aff;
+    background-color: transparent;
     border-radius: 4px;
     height: 1px;
+  }
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: #007aff;
+  }
+
+  &::-webkit-scrollbar {
+    width: 100%;
+    height: 4px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
     background: red;
   }
+`;
 
-  &::-webkit-scrollbar-thumb:window-inactive {
-    background-color: red;
-    border-radius: 4px;
-  } */
+const Fading = styled.div`
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 4px;
+  &::before {
+    position: absolute;
+    content: "";
+    /* top: 20px; */
+    display: inline-block;
+    height: 100%;
+    width: 20px;
+    /* consider parent padding */
+    left: 0;
+    background-image: linear-gradient(to right, white, transparent);
+    /* transports are on 50th */
+    z-index: 60;
+    &::before {
+      content: "hui";
+    }
+  }
+  &::after {
+    position: absolute;
+    content: "";
+    /* top: 20px; */
+    display: inline-block;
+    height: 100%;
+    width: 20px;
+    /* consider parent padding */
+    right: 0;
+    background-image: linear-gradient(to left, white, transparent);
+    /* transports are on 50th */
+    z-index: 60;
+  }
 `;
 
 const RouteBlockContents = styled.div`
@@ -252,23 +263,29 @@ const getIconPath = TransportType => {
 
 const SubPoints = styled.div`
   /* margin-top: 0; */
-  /* padding-left: 32px; */
+  padding-left: 32px;
   /* list-style: none; */
   /* color: red; */
+  position: relative;
 `;
 
 const SubPoint = styled.div`
-  display: inline-block;
-  &::before {
-    content: "&bull;"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
-    width: 100px;
-    height: 100px;
-    color: red; /* Change the color */
-    font-weight: bold; /* If you want it to be bold */
-    display: inline-block; /* Needed to add space between the bullet and the text */
-    width: 1em; /* Also needed for space (tweak if needed) */
-    margin-left: -1em; /* Also needed for space (tweak if needed) */
-  }
+  /* &::before {
+    content: "\\2022";
+    color: red;
+    font-weight: bold;
+  } */
+`;
+
+const SubPointsLine = styled.div`
+  /* display: inline-block; */
+  background-color: blanchedalmond;
+  /* height: 100%; */
+  position: absolute;
+  width: 7px;
+  top: 0;
+  bottom: 0;
+  left: 0;
 `;
 
 class RouteCard extends Component {
@@ -290,29 +307,35 @@ class RouteCard extends Component {
         <RouteBlock>
           {!this.props.noPoints && (
             <SubPoints>
+              <SubPointsLine />
               <SubPoint>{this.props.route.points.departure}</SubPoint>
               <SubPoint>{this.props.route.points.destination}</SubPoint>
             </SubPoints>
           )}
-          <RouteBlockScrollContainer>
-            <RouteBlockContents num={subroutes.length}>
-              {subroutes.length > 1 && <Line />}
-              {subroutes.map((el, i) => (
-                <TransportWrapper key={"transport" + i}>
-                  <Roundings noSides={getSideRoundings(subroutes.length, i)} />
-                  <TransportIcon>
-                    <img
-                      src={getIconPath(el.type)}
-                      alt={el.type}
-                      width="22px"
-                      height="22px"
+          <RouteWrapper>
+            <Fading />
+            <RouteBlockScrollContainer>
+              <RouteBlockContents num={subroutes.length}>
+                {subroutes.length > 1 && <Line />}
+                {subroutes.map((el, i) => (
+                  <TransportWrapper key={"transport" + i}>
+                    <Roundings
+                      noSides={getSideRoundings(subroutes.length, i)}
                     />
-                  </TransportIcon>
-                  <TransportInfo title={el.title} cost={el.cost} />
-                </TransportWrapper>
-              ))}
-            </RouteBlockContents>
-          </RouteBlockScrollContainer>
+                    <TransportIcon>
+                      <img
+                        src={getIconPath(el.type)}
+                        alt={el.type}
+                        width="22px"
+                        height="22px"
+                      />
+                    </TransportIcon>
+                    <TransportInfo title={el.title} cost={el.cost} />
+                  </TransportWrapper>
+                ))}
+              </RouteBlockContents>
+            </RouteBlockScrollContainer>
+          </RouteWrapper>
         </RouteBlock>
         <PriceBlock>
           <Dots />

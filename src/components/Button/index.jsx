@@ -18,8 +18,9 @@ const StyledButton = styled.button`
   outline: none;
 `;
 
-const Button = (props) => {
-  return <StyledButton type="submit">{props.value || "Найти"}</StyledButton>;
+const Button = props => {
+
+  return <StyledButton type="submit" form={props.form}>{props.value || "Найти"}</StyledButton>;
 };
 
 export default Button;

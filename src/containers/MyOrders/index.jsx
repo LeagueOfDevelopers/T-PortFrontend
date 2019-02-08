@@ -2,12 +2,52 @@ import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import RouteCard from "../../components/VariantCard";
 import SectionLable from "../../components/SectionLabel";
-import PersonalDataNavImported from "../../components/DataNav";
+import DataTypeSelector from "../../components/DataNav";
 import InfoLabel from "../../components/InfoLabel";
 import SlimWrapper from "../../components/SlimWrapper";
+import DatePicker from "../../components/DatePicker";
+import { media } from "../../utils/helpers";
 
 const StyledMyOrders = styled(SlimWrapper)`
   /* add to customize */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: space-between;
+`;
+
+const DataTypeWrapper = styled.div`
+  box-sizing: border-box;
+  ${media.large`
+    width: 30%
+  `}
+  ${media.medium`
+    width: 50%
+    padding-right: 15px;
+    margin-bottom: 30px;
+  `}
+  ${media.small`
+    width: 100%
+  `}
+`;
+
+const DatePickerWrapper = styled.div`
+  box-sizing: border-box;
+  width: 30%;
+  ${media.small`
+    width: 100%;
+    margin: 30px 0;
+  `}
+  ${media.medium`
+    padding-left: 15px;
+    width: 50%;
+    margin-bottom: 30px;
+  `}
+  ${media.large`
+    padding-top: 30px;
+    /* width: 50%; */
+  `}
 `;
 
 const LableWrapper = styled.div`
@@ -20,6 +60,17 @@ const OrdersContainer = styled.div`
   padding-left: 30px;
   width: 70%;
   z-index: 50;
+  /* Default order is 0 */
+  ${media.medium`
+    width: 100%;
+    padding: 0;
+    order: 2;
+  `}
+  ${media.small`
+    width: 100%;
+    padding: 0;
+    order:2;
+  `}
 `;
 
 const route1 = {
@@ -87,26 +138,28 @@ class MyOrders extends Component {
     let selected = this.state.selected;
     return (
       <StyledMyOrders>
-        <PersonalDataNavImported>
-          <LableWrapper>
-            <SectionLable text="Ваши заказы" fontWeight={600} />
-          </LableWrapper>
-          <InfoLabel
-            text="Текущие"
-            onClick={this.handleLableClick.bind(null, 1)}
-            selected={selected === 1}
-          />
-          <InfoLabel
-            text="Предстоящие"
-            onClick={this.handleLableClick.bind(null, 2)}
-            selected={selected === 2}
-          />
-          <InfoLabel
-            text="История"
-            onClick={this.handleLableClick.bind(null, 3)}
-            selected={selected === 3}
-          />
-        </PersonalDataNavImported>
+        <DataTypeWrapper>
+          <DataTypeSelector>
+            <LableWrapper>
+              <SectionLable text="Ваши заказы" fontWeight={600} />
+            </LableWrapper>
+            <InfoLabel
+              text="Текущие"
+              onClick={this.handleLableClick.bind(null, 1)}
+              selected={selected === 1}
+            />
+            <InfoLabel
+              text="Предстоящие"
+              onClick={this.handleLableClick.bind(null, 2)}
+              selected={selected === 2}
+            />
+            <InfoLabel
+              text="История"
+              onClick={this.handleLableClick.bind(null, 3)}
+              selected={selected === 3}
+            />
+          </DataTypeSelector>
+        </DataTypeWrapper>
         <OrdersContainer>
           <Fragment>
             {this.state.selected === 1 && <RouteCard route={route1} paid />}
@@ -118,6 +171,9 @@ class MyOrders extends Component {
             {this.state.selected === 3 && <RouteCard route={route3} paid />}
           </Fragment>
         </OrdersContainer>
+        <DatePickerWrapper>
+          <DatePicker />
+        </DatePickerWrapper>
       </StyledMyOrders>
     );
   }
