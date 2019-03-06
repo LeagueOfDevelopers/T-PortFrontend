@@ -119,6 +119,8 @@ const CurveContainer = styled.div`
   top: 0;
 `;
 
+
+
 // TODO ? search redirect or not ? if not how ?
 const Home = () => {
   return (

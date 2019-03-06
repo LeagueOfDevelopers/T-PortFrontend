@@ -3,13 +3,13 @@ import styled, { css } from "styled-components";
 
 const StyledCard = styled.div`
   position: relative;
-  width: 388px;
-  height: 270px;
-  margin: 0 16px;
-  margin-bottom: 26px;
+  width: 100%;
+  height: 100%;
+  /* margin: 0 16px; */
+  /* margin-bottom: 26px; */
   /* background-color: red; */
   border-radius: 10px;
-  box-shadow: 0 2px 6px 0 rgba(152, 148, 148, 0.45);
+  /* box-shadow: 0 2px 6px 0 rgba(152, 148, 148, 0.45); */
 `;
 
 const Thumbnail = styled.div`
