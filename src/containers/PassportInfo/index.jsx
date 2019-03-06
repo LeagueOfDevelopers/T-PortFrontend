@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import SectionLable from "../../components/SectionLabel";
-import Button from "../../components/Button";
-import PassportTemplate from "../../components/PassportTemplate";
+import SectionLabel from "../../components/General/SectionLabel";
+import Button from "../../components/General/Button";
+import PassportTemplate from "../../components/Profile/InfoTemplates/PassportTemplate";
 import { media, hideOn } from "../../utils/helpers";
 
 const Info = styled.div`
@@ -20,7 +20,7 @@ const Info = styled.div`
 const PassportInfo = () => {
   return (
     <Info>
-        <SectionLable text="Паспортные данные"/>
+        <SectionLabel text="Паспортные данные"/>
       <PassportTemplate id="passport"/>
       <Button value="Сохранить" from="passport"/>
     </Info>

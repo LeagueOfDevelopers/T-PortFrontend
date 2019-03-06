@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
-import RouteCard from "../../components/VariantCard";
-import SectionLable from "../../components/SectionLabel";
-import DataTypeSelector from "../../components/DataNav";
-import InfoLabel from "../../components/InfoLabel";
-import SlimWrapper from "../../components/SlimWrapper";
-import DatePicker from "../../components/DatePicker";
+import RouteCard from "../../components/Route/VariantCard";
+import SectionLabel from "../../components/General/SectionLabel";
+import DataTypeSelector from "../../components/Profile/ProfileDataNav";
+import InfoLabel from "../../components/General/InfoLabel";
+import SlimWrapper from "../../components/General/SlimWrapper";
+import DatePicker from "../../components/General/DatePicker";
 import { media } from "../../utils/helpers";
 
 const StyledMyOrders = styled(SlimWrapper)`
@@ -50,7 +50,7 @@ const DatePickerWrapper = styled.div`
   `}
 `;
 
-const LableWrapper = styled.div`
+const LabelWrapper = styled.div`
   padding-left: 36px;
 `;
 
@@ -125,7 +125,7 @@ class MyOrders extends Component {
   }
   state = { orders: ["заказ 1", "заказ 2", "заказ 3", "заказ 4"] };
 
-  handleLableClick = event => {
+  handleLabelClick = event => {
     console.log(event);
     if (this.state.selected !== event) {
       this.setState({
@@ -140,22 +140,22 @@ class MyOrders extends Component {
       <StyledMyOrders>
         <DataTypeWrapper>
           <DataTypeSelector>
-            <LableWrapper>
-              <SectionLable text="Ваши заказы" fontWeight={600} />
-            </LableWrapper>
+            <LabelWrapper>
+              <SectionLabel text="Ваши заказы" fontWeight={600} />
+            </LabelWrapper>
             <InfoLabel
               text="Текущие"
-              onClick={this.handleLableClick.bind(null, 1)}
+              onClick={this.handleLabelClick.bind(null, 1)}
               selected={selected === 1}
             />
             <InfoLabel
               text="Предстоящие"
-              onClick={this.handleLableClick.bind(null, 2)}
+              onClick={this.handleLabelClick.bind(null, 2)}
               selected={selected === 2}
             />
             <InfoLabel
               text="История"
-              onClick={this.handleLableClick.bind(null, 3)}
+              onClick={this.handleLabelClick.bind(null, 3)}
               selected={selected === 3}
             />
           </DataTypeSelector>

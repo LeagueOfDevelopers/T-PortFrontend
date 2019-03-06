@@ -24,7 +24,7 @@ padding-top: 10px;
 padding-bottom: 7px;
 `;
 
-const ColumnLable = styled.div`
+const ColumnLabel = styled.div`
   font-size: 20px;
   letter-spacing: -0.7px;
   margin: 8px 0;
@@ -39,7 +39,7 @@ const Footer = () => {
     <StyledFooter>
       <ContentWrapper>
         <Column>
-          <ColumnLable>Контакты</ColumnLable>
+          <ColumnLabel>Контакты</ColumnLabel>
           <Info>
             <a href="tel:+79991234567890"> +7(999)1234567890</a>
           </Info>
@@ -51,7 +51,7 @@ const Footer = () => {
           </Info>
         </Column>
         <Column>
-          <ColumnLable>Социальные сети</ColumnLable>
+          <ColumnLabel>Социальные сети</ColumnLabel>
           <Info>
             <a href="https://vk.com/leon_bigbon">Вконтакте</a>
           </Info>
@@ -63,7 +63,7 @@ const Footer = () => {
           </Info>
         </Column>
         <Column>
-          <ColumnLable>Партнеры</ColumnLable>
+          <ColumnLabel>Партнеры</ColumnLabel>
           <Info>
             <a href="https://vk.com/leon_bigbon">Вконтакте</a>
           </Info>
@@ -72,18 +72,6 @@ const Footer = () => {
           </Info>
           <Info>
             <a href="https://twitter.com">Twitter</a>
-          </Info>
-        </Column>
-        <Column>
-          <ColumnLable>О нас</ColumnLable>
-          <Info>
-            <a href="https://vk.com/leon_bigbon">Я</a>
-          </Info>
-          <Info>
-            <a href="https://instagram.com">ебал</a>
-          </Info>
-          <Info>
-            <a href="https://twitter.com">твой рот</a>
           </Info>
         </Column>
       </ContentWrapper>

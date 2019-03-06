@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
-import CardForm from "../../components/BankCardTemplate";
-import Button from "../../components/Button";
-import SectionLable from "../../components/SectionLabel";
-import SavedCard from "../../components/SavedBankCard";
+import CardForm from "../../components/Profile/InfoTemplates/BankCardTemplate";
+import Button from "../../components/General/Button";
+import SectionLabel from "../../components/General/SectionLabel";
+import SavedCard from "../../components/Profile/SavedBankCard";
 import { media, hideOn } from "../../utils/helpers";
 
 const StyledCardsInfo = styled.div`
@@ -52,7 +52,7 @@ class BankCardsInfo extends Component {
     return (
       <Fragment>
         <CardBlockWrapper>
-          <SectionLable text="Добавить карту" />
+          <SectionLabel text="Добавить карту" />
           <CardFormWrapper>
             <CardForm id="cc-form"/>
           </CardFormWrapper>
@@ -62,7 +62,7 @@ class BankCardsInfo extends Component {
           </ButtonWrapper>
         </CardBlockWrapper>
         <SavedWrapper>
-          <SectionLable text="Сохраненные" />
+          <SectionLabel text="Сохраненные" />
           <SavedCard />
         </SavedWrapper>
       </Fragment>

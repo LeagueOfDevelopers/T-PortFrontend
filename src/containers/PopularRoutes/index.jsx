@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
-import PopularCard from "../../components/PopularCard";
+import PopularCard from "../../components/Route/PopularCard";
 
-const StyledPopularRoutes = styled.div`
+const Popular = styled.div``;
+
+const RoutesContainer = styled.div`
   padding: 0;
   display: flex;
   flex-wrap: wrap;
@@ -11,16 +13,13 @@ const StyledPopularRoutes = styled.div`
   margin: 0 auto;
 `;
 
-const PopularName = styled.h3`
+const PopularName = styled.div`
   /* font-family: LucidaGrande; */
-  font-size: 24px;
+  font-size: 40px;
   font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
   letter-spacing: -0.1px;
-  text-align: center;
-  color: #000000;
+  /* text-align: center; */
+  /* color: #000000; */
 `;
 
 class PopularRoutes extends Component {
@@ -30,14 +29,14 @@ class PopularRoutes extends Component {
   };
   render() {
     return (
-      <Fragment>
+      <Popular>
         <PopularName>Популярные направления</PopularName>
-        <StyledPopularRoutes>
+        <RoutesContainer>
           {this.state.populars.map((offer, i) => (
             <PopularCard key={offer + i}>{offer}</PopularCard>
           ))}
-        </StyledPopularRoutes>
-      </Fragment>
+        </RoutesContainer>
+      </Popular>
     );
   }
 }

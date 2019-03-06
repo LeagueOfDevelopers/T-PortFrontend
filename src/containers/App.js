@@ -34,7 +34,7 @@ const BodyContents = styled.main`
   /* margin: auto; */
   min-height: calc(100vh - 66px);
   background-color: #f1f3f4;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
   /* font-family: "Open Sans", sans-serif; */
 `;
 

@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
-import SearchForm from "../../components/SearchForm";
-import VariantCard from "../../components/VariantCard";
-import SortOptionSelector from "../../components/SortOptionSelector";
+import SearchForm from "../../components/Route/SearchForm";
+import VariantCard from "../../components/Route/VariantCard";
+import SortOptionSelector from "../../components/Route/SortOptionSelector";
 import SearchOptionPanel from "../SearchOptionPanel";
+import SlimWrapper from "../../components/General/SlimWrapper";
 import { media, hideOn } from "../../utils/helpers";
 
-const StyledRouteSearch = styled.main`
+const StyledRouteSearch = styled(SlimWrapper)`
   /* > input {
     display: inline-block;
     width: 200px;
@@ -27,14 +28,14 @@ const SearchResults = styled.div`
   height: max-content;
   text-align: start;
   ${media.medium`
-    margin: 0 30px;
+    /* margin: 0 30px; */
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: stretch;
   `}
   ${media.small`
-    margin: 0 5px;
+    /* margin: 0 10px; */
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -148,8 +149,7 @@ const route2 = {
 const route3 = {
   subRoutes: [
     { type: "taxi", title: "uber", cost: "10$" },
-    { type: "plane", title: "Аэрофлот", cost: "599$" },
-    { type: "taxi", title: "hui", cost: "10$" }
+    { type: "plane", title: "Аэрофлот", cost: "599$" }
   ],
   totalCost: 10 + 599 + 10,
   arrivalTime: Date.now() + 1000 * 60 * 60 * 24 * 1.5 - 1000 * 60 * 10,
@@ -301,7 +301,7 @@ class RouteSearch extends Component {
         break;
     }
     return (
-      <Fragment>
+      <SlimWrapper>
         <SearchFormBg>
           <SearchForm onSubmit={this.handleSearchGet.bind(this)} />
         </SearchFormBg>
@@ -326,7 +326,7 @@ class RouteSearch extends Component {
             </VariantsInfo>
             <Vriants>
               {this.state.routes.sort(comparer).map((el, i) => (
-                <VariantCard route={el} key={i} noPoints/>
+                <VariantCard route={el} key={i} noPoints />
               ))}
             </Vriants>
           </SearchVariantsWrapper>
@@ -334,7 +334,7 @@ class RouteSearch extends Component {
             <SearchOptionPanel options={RouteOptions} />
           </SearchPanelWrapper>
         </SearchResults>
-      </Fragment>
+      </SlimWrapper>
     );
   }
 }

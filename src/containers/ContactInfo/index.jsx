@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import SectionLable from "../../components/SectionLabel";
-import Button from "../../components/Button";
-import ContactTemplate from "../../components/ContactTemplate";
+import SectionLabel from "../../components/General/SectionLabel";
+import Button from "../../components/General/Button";
+import ContactTemplate from "../../components/Profile/InfoTemplates/ContactTemplate";
 import { media, hideOn } from "../../utils/helpers";
 
 const Info = styled.div`
@@ -20,7 +20,7 @@ const Info = styled.div`
 const ContactInfo = () => {
   return (
     <Info>
-        <SectionLable text="Контактные данные"/>
+        <SectionLabel text="Контактные данные"/>
       <ContactTemplate id="contact"/>
       <Button value="Сохранить" from="contact"/>
     </Info>

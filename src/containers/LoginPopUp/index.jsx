@@ -3,10 +3,12 @@ import styled from "styled-components";
 import LoginForm from "../Login";
 
 const OverLay = styled.div`
-  width: 100%;
-  height: 100%;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 150;
 `;
 
 const PopUpWrapper = styled.div`
@@ -16,6 +18,15 @@ const PopUpWrapper = styled.div`
   left: 0;
   bottom: 0;
   z-index: 99;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  display: ${props => props.folded ? "none" : "flex"};
+`;
+
+const LoginFormWrapper = styled.div`
+    
 `;
 
 class LoginPopUp extends Component {
@@ -29,9 +40,9 @@ class LoginPopUp extends Component {
 
   render() {
     return (
-      <PopUpWrapper hidden={this.state.hidden}>
-        <LoginForm />
+      <PopUpWrapper folded={this.state.hidden}>
         <OverLay onClick={this.handleOnBlur} />
+        <LoginForm />
       </PopUpWrapper>
     );
   }
